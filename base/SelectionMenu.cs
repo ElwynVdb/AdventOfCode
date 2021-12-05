@@ -16,6 +16,7 @@ namespace day_1
             addDay("Day 1 - Sonar Sweep", new Day1());
             addDay("Day 2 - Dive", new Day2());
             addDay("Day 3 - Binary Diagnostic", new Day3());
+            addDay("Day 4 - Giant Squid", new Day4());
         }
 
         public static void DisplayMenu()
@@ -42,10 +43,11 @@ namespace day_1
             } while (selectedIndex <= -1);
 
             Console.Clear();
+            Thread.Sleep(1000);
 
             Day dayToDisplay = _days[_days.Keys.ElementAt(selectedIndex - 1)];
 
-            Thread.Sleep(1);
+  
             Console.WriteLine("Puzzle 1");
             Console.WriteLine("----------");
             dayToDisplay.PuzzleOne();

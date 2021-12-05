@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using advent;
 using advent.day3;
 
@@ -8,15 +9,16 @@ namespace day_1
 {
     public class SelectionMenu
     {
-        private static Dictionary<String, Day> _days = new Dictionary<string, Day>();
+        private static Dictionary<String, Day> _days = new();
 
-        public static void createSelection()
+        public static void CreateSelection()
         {
-            addDay("Day 1 - Numbers", new Day1());
-            addDay("Day 2", new Day2());
+            addDay("Day 1 - Sonar Sweep", new Day1());
+            addDay("Day 2 - Dive", new Day2());
+            addDay("Day 3 - Binary Diagnostic", new Day3());
         }
 
-        public static void displayMenu()
+        public static void DisplayMenu()
         {
             Console.WriteLine("Advent of Code - 2021");
             Console.WriteLine("-----------------------");
@@ -43,6 +45,7 @@ namespace day_1
 
             Day dayToDisplay = _days[_days.Keys.ElementAt(selectedIndex - 1)];
 
+            Thread.Sleep(1);
             Console.WriteLine("Puzzle 1");
             Console.WriteLine("----------");
             dayToDisplay.PuzzleOne();

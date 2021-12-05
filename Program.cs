@@ -8,8 +8,8 @@ namespace advent
     {
         static void Main(string[] args)
         {
-            SelectionMenu.createSelection();
-            SelectionMenu.displayMenu();
+            SelectionMenu.CreateSelection();
+            SelectionMenu.DisplayMenu();
         }
     }
 }

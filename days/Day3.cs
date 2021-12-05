@@ -123,6 +123,7 @@ namespace advent.day3
             
             numbers.RemoveAll(st => !st.ToCharArray()[charPosition].ToString().Equals(toKeep));
         }
+        
         public static long BinaryToDecimal(long n)
         {
             long num = n;

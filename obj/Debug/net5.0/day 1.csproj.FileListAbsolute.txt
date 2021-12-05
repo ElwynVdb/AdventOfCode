@@ -1,0 +1,48 @@
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\bin\Debug\net5.0\day 1.exe
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\bin\Debug\net5.0\day 1.deps.json
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\bin\Debug\net5.0\day 1.runtimeconfig.json
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\bin\Debug\net5.0\day 1.runtimeconfig.dev.json
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\bin\Debug\net5.0\day 1.dll
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\bin\Debug\net5.0\ref\day 1.dll
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\bin\Debug\net5.0\day 1.pdb
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\obj\Debug\net5.0\day 1.csproj.AssemblyReference.cache
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\obj\Debug\net5.0\day 1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\obj\Debug\net5.0\day 1.AssemblyInfoInputs.cache
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\obj\Debug\net5.0\day 1.AssemblyInfo.cs
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\obj\Debug\net5.0\day 1.csproj.CoreCompileInputs.cache
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\obj\Debug\net5.0\day 1.dll
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\obj\Debug\net5.0\ref\day 1.dll
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\obj\Debug\net5.0\day 1.pdb
+C:\Users\elwyn\OneDrive\Bureaublad\advent\day 1\obj\Debug\net5.0\day 1.genruntimeconfig.cache
+C:\Users\elwyn\OneDrive\Bureaublad\advent\bin\Debug\net5.0\day 1.exe
+C:\Users\elwyn\OneDrive\Bureaublad\advent\bin\Debug\net5.0\day 1.deps.json
+C:\Users\elwyn\OneDrive\Bureaublad\advent\bin\Debug\net5.0\day 1.runtimeconfig.json
+C:\Users\elwyn\OneDrive\Bureaublad\advent\bin\Debug\net5.0\day 1.runtimeconfig.dev.json
+C:\Users\elwyn\OneDrive\Bureaublad\advent\bin\Debug\net5.0\day 1.dll
+C:\Users\elwyn\OneDrive\Bureaublad\advent\bin\Debug\net5.0\ref\day 1.dll
+C:\Users\elwyn\OneDrive\Bureaublad\advent\bin\Debug\net5.0\day 1.pdb
+C:\Users\elwyn\OneDrive\Bureaublad\advent\obj\Debug\net5.0\day 1.csproj.AssemblyReference.cache
+C:\Users\elwyn\OneDrive\Bureaublad\advent\obj\Debug\net5.0\day 1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\elwyn\OneDrive\Bureaublad\advent\obj\Debug\net5.0\day 1.AssemblyInfoInputs.cache
+C:\Users\elwyn\OneDrive\Bureaublad\advent\obj\Debug\net5.0\day 1.AssemblyInfo.cs
+C:\Users\elwyn\OneDrive\Bureaublad\advent\obj\Debug\net5.0\day 1.csproj.CoreCompileInputs.cache
+C:\Users\elwyn\OneDrive\Bureaublad\advent\obj\Debug\net5.0\day 1.dll
+C:\Users\elwyn\OneDrive\Bureaublad\advent\obj\Debug\net5.0\ref\day 1.dll
+C:\Users\elwyn\OneDrive\Bureaublad\advent\obj\Debug\net5.0\day 1.pdb
+C:\Users\elwyn\OneDrive\Bureaublad\advent\obj\Debug\net5.0\day 1.genruntimeconfig.cache
+F:\advent\bin\Debug\net5.0\day 1.exe
+F:\advent\bin\Debug\net5.0\day 1.deps.json
+F:\advent\bin\Debug\net5.0\day 1.runtimeconfig.json
+F:\advent\bin\Debug\net5.0\day 1.runtimeconfig.dev.json
+F:\advent\bin\Debug\net5.0\day 1.dll
+F:\advent\bin\Debug\net5.0\ref\day 1.dll
+F:\advent\bin\Debug\net5.0\day 1.pdb
+F:\advent\obj\Debug\net5.0\day 1.csproj.AssemblyReference.cache
+F:\advent\obj\Debug\net5.0\day 1.GeneratedMSBuildEditorConfig.editorconfig
+F:\advent\obj\Debug\net5.0\day 1.AssemblyInfoInputs.cache
+F:\advent\obj\Debug\net5.0\day 1.AssemblyInfo.cs
+F:\advent\obj\Debug\net5.0\day 1.csproj.CoreCompileInputs.cache
+F:\advent\obj\Debug\net5.0\day 1.dll
+F:\advent\obj\Debug\net5.0\ref\day 1.dll
+F:\advent\obj\Debug\net5.0\day 1.pdb
+F:\advent\obj\Debug\net5.0\day 1.genruntimeconfig.cache

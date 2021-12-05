@@ -13,6 +13,7 @@ namespace day_1
         public static void createSelection()
         {
             addDay("Day 1 - Numbers", new Day1());
+            addDay("Day 2", new Day2());
         }
 
         public static void displayMenu()

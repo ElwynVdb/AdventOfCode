@@ -46,9 +46,7 @@ namespace advent
 
                 FillGrid(grid, firstPosition, secondPosition, true);
             }
-
-           
-
+ 
             Console.WriteLine($"Answer: {count(grid, maxDirectionY, maxDirectionX)}");
         }
 

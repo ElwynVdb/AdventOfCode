@@ -1,4 +1,4 @@
-﻿namespace day_1
+﻿namespace advent
 {
     public interface Day
     {

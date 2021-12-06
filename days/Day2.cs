@@ -1,5 +1,4 @@
 ﻿using System;
-using day_1;
 
 namespace advent
 {

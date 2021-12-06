@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using day_1;
 
-namespace advent.day3
+namespace advent
 {
     public class Day3 : Day
     {

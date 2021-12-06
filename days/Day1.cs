@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using day_1;
 
 namespace advent
 {

@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using advent;
-using advent.day3;
-using day_1.days;
 
-namespace day_1
+namespace advent
 {
     public class SelectionMenu
     {
@@ -19,6 +16,7 @@ namespace day_1
             addDay("Day 3 - Binary Diagnostic", new Day3());
             addDay("Day 4 - Giant Squid", new Day4());
             addDay("Day 5 - Hydrothermal Venture", new Day5());
+            addDay("Day 6 - Lanternfish", new Day6());
         }
 
         public static void DisplayMenu()

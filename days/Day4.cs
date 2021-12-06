@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using day_1;
-using Microsoft.VisualBasic;
 
 namespace advent
 {

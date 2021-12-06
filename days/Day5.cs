@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace day_1.days
+namespace advent
 {
     public class Day5 : Day
     {

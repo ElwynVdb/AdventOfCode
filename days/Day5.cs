@@ -46,9 +46,7 @@ namespace day_1.days
 
                 FillGrid(grid, firstPosition, secondPosition, true);
             }
-
-           
-
+ 
             Console.WriteLine($"Answer: {count(grid, maxDirectionY, maxDirectionX)}");
         }
 

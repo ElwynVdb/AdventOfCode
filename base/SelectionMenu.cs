@@ -17,6 +17,7 @@ namespace advent
             addDay("Day 4 - Giant Squid", new Day4());
             addDay("Day 5 - Hydrothermal Venture", new Day5());
             addDay("Day 6 - Lanternfish", new Day6());
+            addDay("Day 7 - The Treachery of Whales", new Day7());
         }
 
         public static void DisplayMenu()

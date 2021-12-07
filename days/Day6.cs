@@ -11,15 +11,15 @@ namespace advent
         
         public void PuzzleOne()
         {
-            Console.WriteLine($"Answer: {countLanternFish(input,80)}");
+            Console.WriteLine($"Answer: {CountLanternFish(input,80)}");
         }
 
         public void PuzzleTwo()
         {
-            Console.WriteLine($"Answer: {countLanternFish(input,256)}");
+            Console.WriteLine($"Answer: {CountLanternFish(input,256)}");
         }
 
-        public long countLanternFish(List<int> initial, int days)
+        private long CountLanternFish(List<int> initial, int days)
         {
             long[] differentAges = new long[9];
             

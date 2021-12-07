@@ -34,37 +34,26 @@ namespace advent
 
             String decimalGamma = "";
             String decimalEpsilon = "";
-
-            Console.Write("Gamma: ");
+            
             foreach (int gammaNumber in gammaCommons)
             {
-                Console.Write(gammaNumber);
                 decimalGamma += gammaNumber;
             }
-
-            Console.WriteLine("");
-
-            Console.Write("Epsilon: ");
+            
             foreach (int epNumber in epsilonCommons)
             {
-                Console.Write(epNumber);
                 decimalEpsilon += epNumber;
             }
 
-            Console.WriteLine("");
+            long intGamma = BinaryToDecimal(long.Parse(decimalGamma)),
+                intEpsilon = BinaryToDecimal(long.Parse(decimalEpsilon));
 
-            long intGamma = BinaryToDecimal(long.Parse(decimalGamma));
-            long intEpsilon = BinaryToDecimal(long.Parse(decimalEpsilon));
-
-            Console.WriteLine($"Gamma Decimal: {intGamma}");
-            Console.WriteLine($"Epsilon Decimal: {intEpsilon}");
             Console.WriteLine($"Answer: {intGamma * intEpsilon}");
         }
 
         public void PuzzleTwo()
         {
-            List<String> numbersOxygen = new List<string>();
-            List<String> numbersRubber = new List<string>();
+            List<String> numbersOxygen = new(), numbersRubber = new();
 
             numbersOxygen.AddRange(input.Split("\n"));
             numbersRubber.AddRange(input.Split("\n"));
@@ -104,14 +93,10 @@ namespace advent
                 
                 removeInvalid(numbersRubber, x, zeros, ones, false);
             }
-            Console.WriteLine("");
 
             long intOxygen = BinaryToDecimal(long.Parse(numbersOxygen[0])),
                 intRubber = BinaryToDecimal(long.Parse(numbersRubber[0]));
-
-            Console.WriteLine($"Oxygen Decimal: {intOxygen}");
-            Console.WriteLine($"Rubber Decimal: {intRubber}");
-
+            
             Console.WriteLine($"Combined: {intOxygen * intRubber}");
         }
 
@@ -122,26 +107,26 @@ namespace advent
             
             numbers.RemoveAll(st => !st.ToCharArray()[charPosition].ToString().Equals(toKeep));
         }
-        
-        public static long BinaryToDecimal(long n)
+
+        private long BinaryToDecimal(long n)
         {
             long num = n;
-            long dec_value = 0;
+            long decValue = 0;
 
             int basea = 1;
 
             long temp = num;
             while (temp > 0)
             {
-                long last_digit = temp % 10;
+                long lastDigit = temp % 10;
                 temp = temp / 10;
 
-                dec_value += last_digit * basea;
+                decValue += lastDigit * basea;
 
                 basea = basea * 2;
             }
 
-            return dec_value;
+            return decValue;
         }
     }
 }

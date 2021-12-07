@@ -42,9 +42,7 @@ namespace advent
                 }
                 if(firstWinning != null) break;
             }
-
-            Console.WriteLine($"Last number: {lastNumber}");
-            Console.WriteLine($"Unmarked count: {firstWinning.CountUnmarked()}");
+            
             Console.WriteLine($"Total: {firstWinning.CountUnmarked() * lastNumber}");
         }
 
@@ -80,9 +78,7 @@ namespace advent
                 }
                 if(lastBoard != null) break;
             }
-
-            Console.WriteLine($"Last number: {lastNumber}");
-            Console.WriteLine($"Unmarked count: {lastBoard.CountUnmarked()}");
+            
             Console.WriteLine($"Total: {lastBoard.CountUnmarked() * lastNumber}");
         }
 

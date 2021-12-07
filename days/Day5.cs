@@ -21,8 +21,8 @@ namespace advent
             {
                 String[] positions = bound.Split(" -> ");
 
-                int[] firstPosition = Array.ConvertAll(positions[0].Split(","), s => int.Parse(s));
-                int[] secondPosition = Array.ConvertAll(positions[1].Split(","), s => int.Parse(s));
+                int[] firstPosition = Array.ConvertAll(positions[0].Split(","), s => int.Parse(s)),
+                    secondPosition = Array.ConvertAll(positions[1].Split(","), s => int.Parse(s));
 
                 FillGrid(grid, firstPosition, secondPosition, false);
             }

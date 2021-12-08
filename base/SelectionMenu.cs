@@ -18,6 +18,7 @@ namespace advent
             addDay("Day 5 - Hydrothermal Venture", new Day5());
             addDay("Day 6 - Lanternfish", new Day6());
             addDay("Day 7 - The Treachery of Whales", new Day7());
+            addDay("Day 8 - Seven Segment Search", new Day8());
         }
 
         public static void DisplayMenu()

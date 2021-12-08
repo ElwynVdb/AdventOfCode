@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace advent
 {
@@ -24,7 +25,8 @@ namespace advent
 
             Array.Sort(horizontalPositions);
             
-            for (int destinationPos = horizontalPositions[0]; destinationPos < horizontalPositions[^1]; destinationPos++)
+            
+            foreach (int destinationPos in Enumerable.Range(horizontalPositions[0], Day7.horizontalPositions[^1]))
             {
                 long fuelUsed = 0;
 

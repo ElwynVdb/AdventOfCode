@@ -58,7 +58,6 @@ namespace advent
                     
                     switch (input.Length)
                     {
-                        // Tried to look for differences, but i can't seem to do this. I don't feel good. 
                       /*  case 5:
                              if (inputArray[0] == 'b' && inputArray[4] == 'g' || inputArray[2] == 'c') number = 5;
                              else number = 3;

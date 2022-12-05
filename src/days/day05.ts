@@ -8,7 +8,6 @@ class Ship {
 
     constructor(input: string[]) {
         this.setup(input);
-        //  console.log(this._stacks.length);
     }
 
     private setup = (input: string[]) => {
@@ -49,10 +48,10 @@ class Ship {
         }
     }
 
-    public applyInstructions = () => {
+    public applyInstructions = (sameOrder:boolean = false) => {
         this._craneInstructions.forEach(instruction => {
             const removed = this._stacks[instruction.from - 1].remove(instruction.count);
-            this._stacks[instruction.to - 1].add(removed);
+            this._stacks[instruction.to - 1].add(removed, sameOrder);
         });
 
         return this;
@@ -76,10 +75,9 @@ class Stack {
         return removal;
     }
 
-    public add = (containers: string[]) => {
-        for (let x = 0; x < containers.length; x++) {
-            this._containers.unshift(containers[x]);
-        }
+    public add = (containers: string[], sameOrder: boolean) => {
+        const containersToAdd = sameOrder ? containers.reverse() : containers;
+        containersToAdd.forEach(c => this._containers.unshift(c));
     };
 
     public get getTopContainer() {
@@ -115,6 +113,19 @@ class Instruction {
     }
 }
 
-const ship = new Ship(input).applyInstructions();
 
-console.log(ship.getTopWord);
+
+
+const partOne = () => {
+    const ship = new Ship(input).applyInstructions();
+    return ship.getTopWord;
+}
+
+
+const partTwo = () => {
+    const ship = new Ship(input).applyInstructions(true);
+    return ship.getTopWord;
+}
+
+console.log(partOne());
+console.log(partTwo());

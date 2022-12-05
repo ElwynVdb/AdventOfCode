@@ -113,9 +113,6 @@ class Instruction {
     }
 }
 
-
-
-
 const partOne = () => {
     const ship = new Ship(input).applyInstructions();
     return ship.getTopWord;

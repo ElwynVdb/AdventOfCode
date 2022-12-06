@@ -6,10 +6,9 @@ const main = (size: number) => {
     let temp = "";
 
     for (let x = 0; x < input.length; x++) {
-        for (let y = 0; y <= (size - 1); y++) {
-            const atIndex = input[x + y];
-            temp += atIndex ? atIndex : "";
-        }
+        for (let y = 0; y <= (size - 1); y++)
+            temp += input[x + y] || "";
+
 
         const set = [...new Set(temp.split(""))];
 

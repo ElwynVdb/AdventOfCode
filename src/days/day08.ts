@@ -103,7 +103,5 @@ const getViewDistanceForTree = (xIndex: number, yIndex: number): number[] => {
 
 const getSizeForTree = (xIndex: number, yIndex: number) => input[yIndex][xIndex];
 
-const sizeOfTree = (xIndex: number, yIndex: number): number => input[yIndex][xIndex];
-
 console.log(partOne());
 console.log(partTwo());

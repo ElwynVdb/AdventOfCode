@@ -1,5 +1,4 @@
 import readInputForDay from "../InputUtil";
-import fs from "fs";
 
 const input: string[] = readInputForDay("07").split("\r\n");
 

@@ -7,11 +7,14 @@ interface IPosition {
     y: number;
 }
 
-const main = () => {
+const main = (tailLength: number) => {
     const grid: number[][] = [];
 
-    let headPosition: IPosition = { x: 0, y: 0 };
-    let tailPosition: IPosition = { x: 0, y: 0 };
+    const knots: IPosition[] = [];
+
+    for (let i = 0; i < tailLength; i++) knots[i] = { x: 0, y: 0 };
+
+    let headPosition: IPosition = knots[0];
 
     const visited: IPosition[] = [];
 
@@ -19,7 +22,6 @@ const main = () => {
         const split = instruction.split(" ");
         const dir = split[0]; // Direction in a tuple [X, Y]
         const times = parseInt(split[1]);
-
 
         for (let ci = 0; ci < times; ci++) {
             // Move Head by given direction
@@ -30,49 +32,43 @@ const main = () => {
                 case "D": headPosition.y += 1; break;
             }
 
-            // Move tail if neccesary
-            const headDistanceX = headPosition.x - tailPosition.x;
-            const headDistanceY = headPosition.y - tailPosition.y;
+            moveTails(knots, visited);
 
-            const notTouching = Math.abs(headDistanceX) > 1 || Math.abs(headDistanceY) > 1
-
-            if (notTouching) {
-                const yMove = Math.sign(headDistanceY);
-                const xMove = Math.sign(headDistanceX);
-
-                tailPosition.x += xMove
-                tailPosition.y += yMove;
+            const tail = knots[knots.length - 1];
+            if (!visited.find(c => c.x === tail.x && c.y === tail.y)) {
+                visited.push({ x: tail.x, y: tail.y });
             }
-
-            if(!visited.find(c => c.x === tailPosition.x && c.y === tailPosition.y)) {
-                visited.push({x: tailPosition.x, y: tailPosition.y});
-            }
-         
         };
+
     });
 
     return visited.length;
 }
 
+const moveTails = (knots: IPosition[], visited: IPosition[]) => {
+    for (let k = 1; k < knots.length; k++) {
+        const previousPosition = knots[k - 1];
+        const currentPosition = knots[k];
 
-const printGrid = (headPosition: IPosition, tailPosition: IPosition, grid: string[][]) => {
-    const copy = JSON.parse(JSON.stringify(grid)); // Deep copy
+        // Move tail if neccesary
+        const headDistanceX = previousPosition.x - currentPosition.x;
+        const headDistanceY = previousPosition.y - currentPosition.y;
 
-    copy[0][0] = "s";
-    copy[headPosition.y][headPosition.x] = "H";
-    copy[tailPosition.y][tailPosition.x] = "T";
+        const notTouching = Math.abs(headDistanceX) > 1 || Math.abs(headDistanceY) > 1
 
-    for (let y = copy.length - 1; y >= 0; y--) {
-        let line = "";
-        for (let x = 0; x < copy[y].length; x++) line += copy[y][x] ? copy[y][x] : ".";
-        console.log(line);
+        if (notTouching) {
+            const yMove = Math.sign(headDistanceY);
+            const xMove = Math.sign(headDistanceX);
+
+            currentPosition.x += xMove
+            currentPosition.y += yMove;
+        }
     }
 }
 
+const partOne = () => main(2);
 
-const partOne = () => main();
-
-// const partTwo = () => main();
+const partTwo = () => main(10);
 
 console.log(partOne());
-// console.log(partTwo());
+console.log(partTwo());

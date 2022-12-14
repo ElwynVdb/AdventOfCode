@@ -1,64 +1,70 @@
 import readInputForDay from "../InputUtil";
 
-const input = readInputForDay("09-test").split("\r\n");
-
-const dirs: { [key: string]: [number, number] } = {
-    R: [1, 0],
-    L: [-1, 0],
-    U: [0, 1],
-    D: [0, -1],
-};
-
+const input = readInputForDay("09").split("\r\n");
 
 interface IPosition {
     x: number;
     y: number;
-    previous?: [number, number][];
 }
 
 const main = () => {
     const grid: number[][] = [];
 
-    let headPosition: IPosition = { x: 0, y: 0, previous: [] };
+    let headPosition: IPosition = { x: 0, y: 0 };
     let tailPosition: IPosition = { x: 0, y: 0 };
+
+    const visited: IPosition[] = [];
 
     input.forEach(instruction => {
         const split = instruction.split(" ");
-        const dir = dirs[split[0]];
+        const dir = split[0]; // Direction in a tuple [X, Y]
+        const times = parseInt(split[1]);
 
-        for (let times = 0; times < parseInt(split[1]); times++) {
-            headPosition = { ...headPosition, previous: [[headPosition.x, headPosition.y], ...headPosition.previous!], x: headPosition.x + dir[0], y: headPosition.y + dir[1] }
 
-            if(!areTouching(headPosition, tailPosition) && (headPosition.x != tailPosition.x || headPosition.y != tailPosition.y)) {
-                tailPosition = { ...tailPosition, x: headPosition.previous![0][0], y: headPosition.previous![0][1] }
+        for (let ci = 0; ci < times; ci++) {
+            // Move Head by given direction
+            switch (dir) {
+                case "L": headPosition.x -= 1; break;
+                case "R": headPosition.x += 1; break;
+                case "U": headPosition.y -= 1; break;
+                case "D": headPosition.y += 1; break;
             }
 
-            if (!grid[tailPosition.y]) grid[tailPosition.y] = [];
-            if (!grid[tailPosition.y][tailPosition.x]) grid[tailPosition.y][tailPosition.x] = 0;
+            // Move tail if neccesary
+            const headDistanceX = headPosition.x - tailPosition.x;
+            const headDistanceY = headPosition.y - tailPosition.y;
 
-            grid[tailPosition.y][tailPosition.x] += 1;
-        }
+            const notTouching = Math.abs(headDistanceX) > 1 || Math.abs(headDistanceY) > 1
+
+            if (notTouching) {
+                const yMove = Math.sign(headDistanceY);
+                const xMove = Math.sign(headDistanceX);
+
+                tailPosition.x += xMove
+                tailPosition.y += yMove;
+            }
+
+            if(!visited.find(c => c.x === tailPosition.x && c.y === tailPosition.y)) {
+                visited.push({x: tailPosition.x, y: tailPosition.y});
+            }
+         
+        };
     });
 
-    return grid.reduce((b, n) => b + (n.filter(e => e >= 1).length), 0);
+    return visited.length;
 }
 
-const areTouching = (head: IPosition, tail: IPosition) => {
-    for (let j = -1; j <= 1; j++) {
-        for (let k = -1; k <= 1; k++) {
-            if (head.x == tail.x + k && head.y == tail.y + j) return true;
-        }
-    }
 
-    return false;
-}
-
-const printGrid = (headPosition: IPosition, tailPosition: IPosition, grid: number[][]) => {
+const printGrid = (headPosition: IPosition, tailPosition: IPosition, grid: string[][]) => {
     const copy = JSON.parse(JSON.stringify(grid)); // Deep copy
+
+    copy[0][0] = "s";
+    copy[headPosition.y][headPosition.x] = "H";
+    copy[tailPosition.y][tailPosition.x] = "T";
 
     for (let y = copy.length - 1; y >= 0; y--) {
         let line = "";
-        for (let x = 0; x < copy[y].length; x++) line += copy[y][x] || ".";
+        for (let x = 0; x < copy[y].length; x++) line += copy[y][x] ? copy[y][x] : ".";
         console.log(line);
     }
 }

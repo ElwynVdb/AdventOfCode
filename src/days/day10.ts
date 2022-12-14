@@ -12,7 +12,8 @@ interface IAction {
     maxCycles: number;
     toAdd: number;
 }
-const outPut: { [key: number]: number } = {};
+
+const cpuOutput: { [key: number]: number } = {};
 
 const simulateCPU = () => {
     const actions = createActions();
@@ -20,7 +21,7 @@ const simulateCPU = () => {
     let cycle = 0;
     let xReg = 1;
     while (actions.length > 0) {
-        outPut[cycle + 1] = xReg;
+        cpuOutput[cycle + 1] = xReg;
         const action = actions[0];
 
         action.cyclesPassed++;
@@ -33,6 +34,29 @@ const simulateCPU = () => {
         cycle++;
     }
 }
+
+const CRTOutput: string[] = [];
+
+const simulateCRT = () => {
+    let index = 0;
+    let row = 0;
+    Object.entries(cpuOutput).forEach((pair, i) => {
+   
+
+        if (i % 40 == 0 && i != 0) {
+            row++;
+            index = 0;
+        }     index++;
+
+        if (!CRTOutput[row] && CRTOutput[row] !== "") CRTOutput[row] = "";
+
+        const valueForCycle = pair[1];
+        CRTOutput[row] += indexesAfterShift(valueForCycle).includes(index) ? "#" : ".";
+    });
+}
+
+const indexesAfterShift = (shift: number) => [shift, shift + 1, shift + 2];
+
 
 const createActions = (): IAction[] => {
     return input.map(cmd => {
@@ -47,11 +71,14 @@ const createActions = (): IAction[] => {
 }
 
 simulateCPU();
+simulateCRT();
 
-const partOne = () => [20, 60, 100, 140, 180, 220].map(v => outPut[v] * v).reduce((a, b) => a + b);
+const partOne = () => [20, 60, 100, 140, 180, 220].map(v => cpuOutput[v] * v).reduce((a, b) => a + b);
 
 const partTwo = () => {
-
+    CRTOutput.forEach(c => {
+         console.log(c);
+    })
 }
 
 console.log(partOne());

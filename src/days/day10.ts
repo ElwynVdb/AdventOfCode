@@ -46,12 +46,9 @@ const createActions = (): IAction[] => {
     })
 }
 
-const partOne = () => {
-    simulateCPU();
+simulateCPU();
 
-    const fetch = [20, 60, 100, 140, 180, 220];
-    console.log(fetch.map(v => outPut[v] * v).reduce((a, b) => a + b));
-}
+const partOne = () => [20, 60, 100, 140, 180, 220].map(v => outPut[v] * v).reduce((a, b) => a + b);
 
 const partTwo = () => {
 

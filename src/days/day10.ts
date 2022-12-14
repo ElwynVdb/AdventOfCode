@@ -40,13 +40,15 @@ const CRTOutput: string[] = [];
 const simulateCRT = () => {
     let index = 0;
     let row = 0;
+
     Object.entries(cpuOutput).forEach((pair, i) => {
-   
 
         if (i % 40 == 0 && i != 0) {
             row++;
             index = 0;
-        }     index++;
+        }
+
+        index++;
 
         if (!CRTOutput[row] && CRTOutput[row] !== "") CRTOutput[row] = "";
 
@@ -75,11 +77,7 @@ simulateCRT();
 
 const partOne = () => [20, 60, 100, 140, 180, 220].map(v => cpuOutput[v] * v).reduce((a, b) => a + b);
 
-const partTwo = () => {
-    CRTOutput.forEach(c => {
-         console.log(c);
-    })
-}
+const partTwo = () => CRTOutput.join("\n");
 
 console.log(partOne());
 console.log(partTwo());

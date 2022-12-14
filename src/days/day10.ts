@@ -14,6 +14,7 @@ interface IAction {
 }
 
 const cpuOutput: { [key: number]: number } = {};
+const CRTOutput: string[] = [];
 
 const simulateCPU = () => {
     const actions = createActions();
@@ -34,8 +35,6 @@ const simulateCPU = () => {
         cycle++;
     }
 }
-
-const CRTOutput: string[] = [];
 
 const simulateCRT = () => {
     let index = 0;
@@ -59,7 +58,6 @@ const simulateCRT = () => {
 
 const indexesAfterShift = (shift: number) => [shift, shift + 1, shift + 2];
 
-
 const createActions = (): IAction[] => {
     return input.map(cmd => {
         const split = cmd.split(" ");
@@ -73,10 +71,10 @@ const createActions = (): IAction[] => {
 }
 
 simulateCPU();
-simulateCRT();
 
 const partOne = () => [20, 60, 100, 140, 180, 220].map(v => cpuOutput[v] * v).reduce((a, b) => a + b);
 
+simulateCRT();
 const partTwo = () => CRTOutput.join("\n");
 
 console.log(partOne());

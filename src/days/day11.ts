@@ -101,6 +101,5 @@ const partOne = () => checkItems(20, true);
 
 const partTwo = () => checkItems(10000, false);
 
-
 console.log(partOne());
 console.log(partTwo());   

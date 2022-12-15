@@ -1,19 +1,19 @@
 import readInputForDay from "../InputUtil";
 
-const input: string[] = readInputForDay("11-test").split("\r\n");
+const input: string[] = readInputForDay("11").split("\r\n");
 
 interface Monkey {
     id: number;
-    items: bigint[]; // Worry Levels
-    operation: (old: bigint) => bigint;
-    test: (result: bigint) => boolean;
+    items: number[]; // Worry Levels
+    operation: (old: number) => number;
+    test: (result: number) => boolean;
     truthyReceiver: number;
     falsyReceiver: number;
     inspected: number;
-    divisible: bigint;
+    divisible: number;
 }
 
-const monkeys: Monkey[] = [];
+let monkeys: Monkey[] = [];
 const numberRegex = /[^\d.]/g;
 
 const deserialize = () => {
@@ -30,22 +30,27 @@ const deserialize = () => {
                 currentMonkey.id = parseInt(line.replace(numberRegex, ""));
                 break;
             case 2:
-                currentMonkey.items = line.replace(numberRegex, " ").split(" ").map(e => parseInt(e)).filter(e => !isNaN(e)).map(BigInt);
+                currentMonkey.items = line.replace(numberRegex, " ").split(" ").map(e => parseInt(e)).filter(e => !isNaN(e));
                 break;
             case 3:
                 const actions = line.split(" ").slice(6);
 
                 currentMonkey.operation = (old) => {
-                    const lcm = monkeys.map(monkey => monkey.divisible).reduce((a, b) => a * b, BigInt(1));
-                    const applyValue = BigInt(actions[1] === "old" ? old.toString() : parseInt(actions[1]).toString());
-                    return applyValue % lcm;
+                    const applyValue = actions[1] === "old" ? old : parseInt(actions[1]);
+
+                    switch (actions[0]) {
+                        case "*": return old * applyValue;
+                        case "/": return old / applyValue;
+                        case "+": return old + applyValue;
+                        case "-": return old - applyValue;
+                    }
+
+                    return -1;
                 };
                 break;
             case 4:
-                currentMonkey.divisible = BigInt(line.replace(numberRegex, ""));
-                currentMonkey.test = (result) => {
-                    return result % currentMonkey.divisible! === BigInt(0)
-                };
+                currentMonkey.divisible = parseInt(line.replace(numberRegex, ""));
+                currentMonkey.test = (result) => result % parseInt(line.replace(numberRegex, "")) === 0;
                 break;
             case 5:
                 currentMonkey.truthyReceiver = parseInt(line.replace(numberRegex, ""));
@@ -64,18 +69,24 @@ const deserialize = () => {
     }
 }
 
-deserialize();
+
 
 const checkItems = (rounds: number, worried: boolean) => {
+
+    monkeys = monkeys.filter(m => false);
+    deserialize();
+
+    const productOfDivisors = monkeys.map(m => m.divisible).reduce((acc, cur) => acc * cur, 1)
+
 
     for (let x = 0; x < rounds; x++) {
         monkeys.forEach(monkey => {
             monkey.items.forEach(item => {
                 monkey.inspected++;
                 const newValue = monkey.operation(item);
-                const bored = worried ? Math.floor((parseInt(newValue.toString()) / 3)) : newValue;
-                const monkeyToPass = monkey.test(BigInt(bored)) ? monkey.truthyReceiver : monkey.falsyReceiver;
-                monkeys[monkeyToPass].items.push(BigInt(bored));
+                const bored = Math.floor(worried ? newValue / 3 : (newValue % productOfDivisors));
+                const monkeyToPass = monkey.test(bored) ? monkey.truthyReceiver : monkey.falsyReceiver;
+                monkeys[monkeyToPass].items.push(bored);
             });
 
             monkey.items = [];
@@ -92,4 +103,4 @@ const partTwo = () => checkItems(10000, false);
 
 
 console.log(partOne());
-console.log(partTwo());
+console.log(partTwo());   

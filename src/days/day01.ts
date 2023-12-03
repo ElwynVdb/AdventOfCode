@@ -1,26 +1,60 @@
+import { range, sum } from "ramda";
 import readInputForDay from "../InputUtil";
 
 const input: string = readInputForDay("01");
 
 const splitInput = input.split("\r\n");
-const caloriesCompiled: number[] = [];
 
-let tempColorieCount = 0;
-splitInput.forEach(c => {
-    if (c === "") {
-        caloriesCompiled[caloriesCompiled.length] = tempColorieCount;
-        tempColorieCount = 0;
-        return;
-    }
+const partOne = () => {
+    return sum(
+        splitInput.map((input) => (
+            input.split("")
+            .filter(symbol => !isNaN(parseInt(symbol)))
+            .join("")
+        )).map(numbers => {
+            const combinedNumber =  parseInt(numbers[0] + numbers[numbers.length - 1]);
+            return isNaN(combinedNumber) ? 0 : combinedNumber;
+        })
+    );
+}
 
-    tempColorieCount += parseInt(c);
-});
+const mapping: any = {
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five":  5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9
+};
 
-const sorted = caloriesCompiled.sort((first, second) => second - first);
+const partTwo = () => {
+    
+   const c =  splitInput.map(input => {
+        const foundNumbers: number[] = [];
 
-const partOne = () => sorted[0];
+        range(0, input.length).forEach(index => {
+            if(!isNaN(parseInt(input[index]))) {
+                foundNumbers.push(parseInt(input[index]));
+            }
+    
+            Object.entries(mapping).forEach(([mapKey, mapValue]) => {
+                const found = mapping[input.substring(index, index + mapKey.length)];
+           
+                if(found) {
+                    foundNumbers.push(found);
+                }
+            })
+        }) 
 
-const partTwo = () => sorted.filter((_s, i) => i <= 2).reduce((base, next) => base + next);
+
+        return foundNumbers[0] + "" + foundNumbers[foundNumbers.length - 1];
+    });
+
+    return sum(c.map(number => parseInt(number)));
+}
 
 console.log(partOne());
 console.log(partTwo());
